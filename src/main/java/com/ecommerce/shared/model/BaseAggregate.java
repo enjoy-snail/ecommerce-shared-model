@@ -7,21 +7,21 @@ import java.util.List;
 import static com.google.common.collect.Lists.newArrayList;
 
 public abstract class BaseAggregate {
-    private List<DomainEvent> events;
+    private List<DomainEvent> _events;
 
-    protected void raiseEvent(DomainEvent event) {
-        getEvents().add(event);
+    protected final void raiseEvent(DomainEvent event) {
+        get_events().add(event);
     }
 
-    void clearEvents() {
-        getEvents().clear();
+    final void clearEvents() {
+        get_events().clear();
     }
 
-    List<DomainEvent> getEvents() {
-        if (events == null) {
-            events = newArrayList();
+    final List<DomainEvent> get_events() {
+        if (_events == null) {
+            _events = newArrayList();
         }
-        return events;
+        return _events;
     }
 
 }
